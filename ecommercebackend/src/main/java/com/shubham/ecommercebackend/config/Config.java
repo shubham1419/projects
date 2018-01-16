@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.shubham.ecommercebackend.dto.Category;
-
+import com.shubham.ecommercebackend.dto.Product;
 
 
 @Configuration
@@ -52,7 +52,7 @@ public class Config {
       props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
       factoryBean.setHibernateProperties(props);
-      factoryBean.setAnnotatedClasses(Category.class);
+      factoryBean.setAnnotatedClasses(Category.class, Product.class);
       return factoryBean;
    }
 

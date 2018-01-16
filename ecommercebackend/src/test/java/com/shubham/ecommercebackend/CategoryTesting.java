@@ -10,7 +10,7 @@ import com.shubham.ecommercebackend.config.Config;
 import com.shubham.ecommercebackend.dao.CategoryDao;
 import com.shubham.ecommercebackend.dto.Category;
 
-public class Testing {
+public class CategoryTesting {
 	
 	
 	private static CategoryDao categoryDao;
@@ -86,7 +86,7 @@ public class Testing {
 		/*delete category*/
 		assertEquals("Successfully deleted single category", true, categoryDao.delete(category));
 	
-		/*delete category*/
+		/*read category*/
 		assertEquals("Successfully fetched acive categories",3, categoryDao.list().size());
 	}
 	
