@@ -53,7 +53,7 @@ public class ProductTesting {
 		
 		update product
 		product = productDao.get(2);
-		product.setName("Samsung Galaxy S7");
+		product.setName("Samsung Galaxy Note 8");
 		assertEquals("Something went wrong", true, productDao.update(product));
 	
 		delete product
