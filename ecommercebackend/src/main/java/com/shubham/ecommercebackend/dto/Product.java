@@ -31,10 +31,9 @@ public class Product {
 	private String description;
 	@Min(value=1,message="Please enter valid Price...")
 	@Column(name = "unit_price")
-	private double unitPrice;
+	private double unitPrice; 
 	private int quantity;
 	// @Column(name="is_active")
-	@JsonIgnore
 	private boolean active;
 	@Column(name = "category_id")
 	@JsonIgnore

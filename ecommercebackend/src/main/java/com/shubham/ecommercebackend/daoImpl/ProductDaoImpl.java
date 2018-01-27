@@ -33,7 +33,7 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> list() {
 
-		return sessionFactory.getCurrentSession().createQuery("FROM Product", Product.class).getResultList();
+		return sessionFactory.getCurrentSession().createQuery("FROM Product where categoryId != 0", Product.class).getResultList();
 	}
 
 	/* add product */
@@ -78,9 +78,10 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public List<Product> allActiveProducts() {
-		String allActiveProducts = "from Product where active = :active";
-		return sessionFactory.getCurrentSession().createQuery(allActiveProducts, Product.class)
-				.setParameter("active", true).getResultList();
+		int categoryId = 0;
+		String allActiveProductsByCategory = "from Product where active = :active and categoryId != :categoryId";
+		return sessionFactory.getCurrentSession().createQuery(allActiveProductsByCategory, Product.class)
+				.setParameter("active", true).setParameter("categoryId", categoryId).getResultList();
 	}
 
 	@Override
