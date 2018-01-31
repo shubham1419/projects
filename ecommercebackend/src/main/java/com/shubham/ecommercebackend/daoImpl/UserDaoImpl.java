@@ -1,5 +1,7 @@
 package com.shubham.ecommercebackend.daoImpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -73,6 +75,35 @@ public class UserDaoImpl implements UserDao {
 		{
 			e.printStackTrace();
 			return null;	
+		}
+	}
+
+	@Override
+	public Address getBillingAddress(User user) {
+		String query="from Address where user=:user and billing=:billing";
+		try {
+			
+			return sessionFactory.getCurrentSession().createQuery(query,Address.class).setParameter("user", user).setParameter("billing",true).getSingleResult();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public List<Address> getShippingAddresses(User user) {
+		String query="from Address where user=:user and shipping=:shipping";
+		try {
+			
+			return sessionFactory.getCurrentSession().createQuery(query,Address.class).setParameter("user", user).setParameter("shipping",true).getResultList();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
 		}
 	}
 	
