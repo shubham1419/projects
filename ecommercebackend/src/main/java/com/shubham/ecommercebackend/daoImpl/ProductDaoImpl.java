@@ -67,7 +67,7 @@ public class ProductDaoImpl implements ProductDao {
 	public boolean delete(Product product) {
 		product.setActive(false);
 		try {
-			sessionFactory.getCurrentSession().update(product);
+			sessionFactory.getCurrentSession().delete(product);
 
 			return true;
 		} catch (Exception e) {
