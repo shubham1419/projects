@@ -22,18 +22,18 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
         return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/register/register-flow.xml", "register").build();
     }
 */
-      @Bean
+/*      @Bean
     public FlowDefinitionRegistry flowRegistry() {
     	  return getFlowDefinitionRegistryBuilder()
     		        .setBasePath("/WEB-INF/flows")
-    		        .addFlowLocationPattern("/**/*-flow.xml")
+    		        .addFlowLocationPattern("/**/ /*-flow.xml")
     		        .build();
       }
-    
-/*    @Bean
+    */
+    @Bean
     public FlowDefinitionRegistry flowRegistry() {
         return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/activation-flow.xml", "activate").build();
-    }*/
+    }
  
     @Bean
     public FlowExecutor flowExecutor() {
