@@ -16,22 +16,25 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 
     @Autowired
     private WebMvcConfig webMvcConfig;
-
-    
-    
-    @Bean
-    public FlowDefinitionRegistry flowRegistry() {
-    	return getFlowDefinitionRegistryBuilder()
-    	        .setBasePath("/WEB-INF/flows")
-    	        .addFlowLocationPattern("/**/*-flow.xml")
-    	        .build();
-    }
     
 /*    @Bean
     public FlowDefinitionRegistry flowRegistry() {
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/activate/activation-flow.xml", "activate").build();
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/register/register-flow.xml", "register").build();
     }
 */
+      @Bean
+    public FlowDefinitionRegistry flowRegistry() {
+    	  return getFlowDefinitionRegistryBuilder()
+    		        .setBasePath("/WEB-INF/flows")
+    		        .addFlowLocationPattern("/**/*-flow.xml")
+    		        .build();
+      }
+    
+/*    @Bean
+    public FlowDefinitionRegistry flowRegistry() {
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/activation-flow.xml", "activate").build();
+    }*/
+ 
     @Bean
     public FlowExecutor flowExecutor() {
         return getFlowExecutorBuilder(flowRegistry()).build();

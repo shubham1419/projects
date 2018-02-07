@@ -1,18 +1,19 @@
 package org.baeldung.servlet;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
 
 @Controller
-public class Mcontroller {
-
-	@RequestMapping("/")
+public class MainController {
+	
+	@RequestMapping(value= {"/","home","index"})
 	public ModelAndView home()
 	{
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("activation");
 		mv.addObject("title","Home");
 		return mv;
+				
 	}
-	
+
 }
