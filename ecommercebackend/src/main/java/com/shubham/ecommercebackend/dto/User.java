@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user_detail")
@@ -24,21 +28,35 @@ public class User implements Serializable {
 		private int id;
 		@OneToOne(mappedBy="user", cascade = CascadeType.ALL)
 		private Cart cart;
-		//@NotBlank(message = "Please enter first name!")
+		@NotBlank(message = "Please enter first name!")
 		@Column(name = "first_name")
 		private String firstName;
-		//@NotBlank(message = "Please enter last name!")
+		@NotBlank(message = "Please enter last name!")
 		@Column(name = "last_name")
 		private String lastName;
-		//@NotBlank(message = "Please enter email address!")	
+		@NotBlank(message = "Please enter email address!")	
+		@Pattern(regexp = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}", message = "Please enter valid Email!")		
 		private String email;
-		//@NotBlank(message = "Please enter contact number!")
+		@NotBlank(message = "Please enter contact number!")
 		@Column(name = "contact_number")
 		private String contactNumber;
 		private String role;
-		//@NotBlank(message = "Please enter password!")
+		@NotBlank(message = "Please enter password!")
 		private String password;
 		private boolean enabled = true;
+		
+		@Transient
+		private String confirmPassword;
+	
+		
+		public String getConfirmPassword() {
+			return confirmPassword;
+		}
+		public void setConfirmPassword(String confirmPassword) {
+			this.confirmPassword = confirmPassword;
+		}
+		
+		
 		public int getId() {
 			return id;
 		}
