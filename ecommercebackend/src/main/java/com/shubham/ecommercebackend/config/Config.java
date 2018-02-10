@@ -35,7 +35,7 @@ public class Config {
    @Autowired
    private Environment env;
 
-   @Bean
+   @Bean("dataSource")
    public DataSource getDataSource() {
       BasicDataSource dataSource = new BasicDataSource();
       dataSource.setDriverClassName(env.getProperty("db.driver"));
